@@ -115,6 +115,7 @@ typedef SPi< P14, P13, P12, P15 > spi;
 #error "No SPI entry in usbhost.h"
 #endif
 
+
 typedef enum {
         vbus_on = 0,
         vbus_off = GPX_VBDET

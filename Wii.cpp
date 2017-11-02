@@ -271,8 +271,8 @@ void WII::ACLData(const uint8_t* l2capinbuf) {
 				// Update button state and click state variables
 				ButtonState				= l2c->wii_buttons;
 				if(ButtonState != OldButtonState) {
-					ButtonClickState	= ButtonState & ~OldButtonState;
-					OldButtonState		= ButtonState;
+					ButtonClickState	|= (ButtonState & ~OldButtonState);
+					OldButtonState		 =  ButtonState;
 				}
 
 				Notify(PSTR("\r\nButtonState: "), 0x80);
@@ -663,7 +663,8 @@ bool WII::getButtonPress(ButtonEnum b) { // Return true when a button is pressed
 
 bool WII::getButtonClick(ButtonEnum b) { // Only return true when a button is clicked
 	uint32_t button = pgm_read_dword(&WII_BUTTONS[(uint8_t)b]);
-	bool click = (ButtonClickState & button);
-	ButtonClickState &= ~button; // clear "click" event
-	return click;
+	return ButtonClickState & button;
+//	bool click = (ButtonClickState & button);
+//	ButtonClickState &= ~button; // clear "click" event
+//	return click;
 }

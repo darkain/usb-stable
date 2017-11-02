@@ -17,6 +17,8 @@ e-mail   :  support@circuitsathome.com
 
 /* derived from Konstantin Chizhov's AVR port templates */
 
+#if 0
+
 #if !defined(_usb_h_) || defined(_avrpins_h_)
 #error "Never include avrpins.h directly; include Usb.h instead"
 #else
@@ -1373,3 +1375,6 @@ MAKE_PIN(P15, 15); // SS
 #endif
 
 #endif //_avrpins_h_
+
+
+#endif //0

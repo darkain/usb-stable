@@ -71,6 +71,7 @@ public:
 	 */
 	bool getButtonPress(ButtonEnum b);
 	bool getButtonClick(ButtonEnum b);
+	INLINE void clear() { ButtonClickState = 0; }
 	/**@}*/
 
 	/** @name Wii Controller functions */
